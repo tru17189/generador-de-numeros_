@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
  
@@ -22,7 +24,9 @@ public class RadixSort {
  
   public static void main(String[] args)
   {
-   
+   StringBuffer cadena = new StringBuffer();
+        try{
+              FileWriter fw3 = new FileWriter("ArchivoGenerado(Radio)");	
     Object[] list = new Object[LENGTH];
  
     
@@ -37,6 +41,14 @@ public class RadixSort {
     for(int i=0; i < sortedList.length; i++){
       System.out.println(sortedList[i]);
     }
+     for (int x=0;x<sortedList.length;x++){
+          cadena =cadena.append(sortedList[x]);
+          }
+            fw3.write(cadena.toString());
+            fw3.close(); 
+	}catch(IOException e){
+            System.out.println("Error E/S: "+e);
+        }
  
   }
  

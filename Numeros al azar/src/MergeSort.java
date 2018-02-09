@@ -110,7 +110,7 @@ public class MergeSort {
             int[] result = new int[n];
 	    Random random = new Random();
 	try{
-              FileWriter fw1=new FileWriter("ArchivoGenerado(Merge)");		
+              FileWriter fw1=new FileWriter("ArchivoGenerado(Quick)");		
 	    for (int i = 0; i < result.length; i++) {
 		    result[i] = random.nextInt(n * 10);
 	    }

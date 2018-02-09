@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 public class QuickSort {
 	
@@ -59,7 +61,9 @@ public class QuickSort {
         System.out.println("QUICK SORT");
         System.out.println("");
         Random random = new Random();
- 
+        StringBuffer cadena = new StringBuffer();
+        try{
+              FileWriter fw2 = new FileWriter("ArchivoGenerado(Quick)");		
         for (int i = 0; i < N; i++)
             sequence[i] = Math.abs(random.nextInt(100));
  
@@ -70,6 +74,15 @@ public class QuickSort {
         System.out.println("FINAL SORT ");
         QuickSort1(0, N - 1);
         printSequence(sequence);
+        
+          for (int x=0;x<sequence.length;x++){
+          cadena =cadena.append(sequence[x]);
+          }
+            fw2.write(cadena.toString());
+            fw2.close(); 
+	}catch(IOException e){
+            System.out.println("Error E/S: "+e);
+        }
+    }
     }
 	
-}
