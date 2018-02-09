@@ -1,10 +1,14 @@
 
 
+import static java.awt.PageAttributes.MediaType.A;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
+import static javax.print.attribute.standard.MediaSize.Engineering.A;
 
 public class GnomeSort {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		int A[] = new int[3000];
 		populateArray(A);
 		System.out.println("INITIAL SORT");
@@ -29,12 +33,29 @@ public class GnomeSort {
 	}
 
 	public static void printArray(int[] B) {
+            int[] S; 
+            S = B; 
 		System.out.println(Arrays.toString(B));
-	}
+        }
+            
+           
 
-	public static void populateArray(int[] B) {
-		for (int i = 0; i < B.length; i++) {
+	public static void populateArray(int[] B) throws IOException {
+           StringBuffer cadena = new StringBuffer();
+
+	 try{
+              FileWriter fw=new FileWriter("ArchivoGenerado(Gnome)");
+            for (int i = 0; i < B.length; i++) {
 			B[i] = (int) (Math.random() * 1000);
 		}
-	}
+                       for (int x=0;x<B.length;x++){
+          cadena =cadena.append(B[x]);
+          }
+            fw.write(cadena.toString());
+            fw.close(); 
+	}catch(IOException e){
+            System.out.println("Error E/S: "+e);
+        }
 }
+        }
+        

@@ -1,5 +1,8 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
+import static javax.print.attribute.standard.MediaSize.Engineering.A;
 
 
 public class MergeSort {
@@ -103,15 +106,23 @@ public class MergeSort {
 	
 
 	private int[] generateRandomNumbers(int n){
-		
-	    int[] result = new int[n];
+            StringBuffer cadena = new StringBuffer();
+            int[] result = new int[n];
 	    Random random = new Random();
-		
+	try{
+              FileWriter fw1=new FileWriter("ArchivoGenerado(Merge)");		
 	    for (int i = 0; i < result.length; i++) {
 		    result[i] = random.nextInt(n * 10);
 	    }
-	
-	    return result;
+           for (int x=0;x<result.length;x++){
+          cadena =cadena.append(result[x]);
+          }
+            fw1.write(cadena.toString());
+            fw1.close(); 
+	}catch(IOException e){
+            System.out.println("Error E/S: "+e);
+        }
+            return result;
 	}
 
 }
